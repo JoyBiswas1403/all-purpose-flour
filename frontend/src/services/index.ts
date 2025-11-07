@@ -1,5 +1,5 @@
 import api from './api';
-import type { AuthResponse, LoginDto, RegisterDto, Event, SwapRequest, CreateEventDto } from '../types';
+import type { AuthResponse, LoginDto, RegisterDto, Event, CreateEventDto } from '../types'; 
 
 // Helpers to bridge backend <-> frontend type mismatches
 const mapStatusToFrontend = (status: string): Event['status'] => {

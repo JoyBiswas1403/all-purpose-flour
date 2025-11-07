@@ -1,4 +1,5 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 import dayjs from 'dayjs';
 import { events } from '../services';
 
