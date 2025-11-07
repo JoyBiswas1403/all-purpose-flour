@@ -1,0 +1,26 @@
+# docker-compose.yml
+services:
+  api:
+    build: ./backend
+    container_name: apf_api
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - apf_sqlite:/app/database
+    # If your app writes ./database.sqlite next to code, mount project root instead:
+    # volumes:
+    #   - ./backend:/app
+    #   - apf_sqlite:/app
+  web:
+    build: ./frontend
+    container_name: apf_web
+    ports:
+      - "5173:80"
+    environment:
+      - VITE_API_URL=http://localhost:3000
+    depends_on:
+      - api
+volumes:
+  apf_sqlite:

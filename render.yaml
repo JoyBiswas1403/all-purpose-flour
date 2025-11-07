@@ -1,0 +1,28 @@
+# render.yaml (place at repo root)
+services:
+  - type: web
+    name: apf-backend
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: node dist/index.js
+    repo: https://github.com/your-user/your-repo  # <- update after pushing
+    rootDir: backend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: DATABASE_URL
+        value: sqlite:/opt/render/project/src/database.sqlite
+      - key: CORS_ORIGIN
+        value: https://your-vercel-domain.vercel.app  # update after Vercel deploy
+    disk:
+      name: data
+      mountPath: /opt/render/project/src
+      sizeGB: 1

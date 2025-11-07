@@ -1,0 +1,126 @@
+{
+  "info": {
+    "name": "All Purpose Flour - API",
+    "_postman_id": "apf-collection-1234",
+    "description": "Basic auth, events, and swap requests.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{API_BASE}}/api/auth/register",
+          "host": [
+            "{{API_BASE}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Alice\", \"email\": \"alice@test.com\", \"password\": \"pass123\"}"
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{API_BASE}}/api/auth/login",
+          "host": [
+            "{{API_BASE}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"alice@test.com\", \"password\": \"pass123\"}"
+        }
+      }
+    },
+    {
+      "name": "Create Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{API_BASE}}/api/events",
+          "host": [
+            "{{API_BASE}}"
+          ],
+          "path": [
+            "api",
+            "events"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Morning Shift\", \"startTime\": \"2025-11-08T09:00:00\", \"endTime\": \"2025-11-08T13:00:00\", \"swappable\": true}"
+        }
+      }
+    },
+    {
+      "name": "List Marketplace",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          }
+        ],
+        "url": {
+          "raw": "{{API_BASE}}/api/marketplace",
+          "host": [
+            "{{API_BASE}}"
+          ],
+          "path": [
+            "api",
+            "marketplace"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "API_BASE",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "TOKEN",
+      "value": ""
+    }
+  ]
+}
