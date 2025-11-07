@@ -1,4 +1,3 @@
-# render.yaml
 services:
   - type: web
     name: apf-backend
@@ -6,13 +5,14 @@ services:
     plan: free
     region: oregon
     rootDir: backend
+    # Install devDependencies so TypeScript compiler is available on Render
     buildCommand: npm ci --include=dev && npm run build
     startCommand: node dist/index.js
     envVars:
       - key: NODE_ENV
         value: production
       - key: NPM_CONFIG_PRODUCTION
-        value: "false"              # ensure dev deps install on build
+        value: "false"
       - key: PORT
         value: "3000"
       - key: JWT_SECRET
@@ -22,4 +22,4 @@ services:
       - key: DATABASE_URL
         value: sqlite:/opt/render/project/src/database.sqlite
       - key: CORS_ORIGIN
-        value: http://localhost:5173  # change to your Vercel URL after frontend is live
+        value: http://localhost:5173
